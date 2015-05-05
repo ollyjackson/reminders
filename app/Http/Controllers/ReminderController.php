@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Reminder;
-
+	
 class ReminderController extends Controller {
 
 	/**
@@ -28,7 +28,7 @@ class ReminderController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('reminders.create');
 	}
 
 	/**
@@ -36,7 +36,7 @@ class ReminderController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreReminderRequest $request)
 	{
 		//
 	}
@@ -47,9 +47,8 @@ class ReminderController extends Controller {
 	 * @param  Reminder  $reminder
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($reminder)
 	{
-		$reminder = Reminder::find($id);
 		return view('reminders.show')->with('reminder', $reminder);
 	}
 
@@ -59,9 +58,10 @@ class ReminderController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($reminder)
 	{
-		//
+		//$reminder = Reminder::findOrFail($id);
+		return view('reminders.edit')->with('reminder', $reminder);
 	}
 
 	/**
